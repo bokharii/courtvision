@@ -47,6 +47,7 @@ export default function HistoryPage() {
           }}
         ></input>
         <button
+          disabled={!selectedDate}
           onClick={() => {
             if (!selectedDate) return;
             setLoading(true);
