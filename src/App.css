@@ -182,3 +182,23 @@
     border-right-color: var(--border);
   }
 }
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--code-bg);
+}
+
+.navbar-links{
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-links a {
+  text-decoration: none
+  color: var(--text-h)
+  padding: 0.5rem 1rem
+}
