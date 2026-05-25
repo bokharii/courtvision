@@ -7,6 +7,7 @@ import "./App.css";
 
 function App() {
   const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchNBAData = async () => {
@@ -19,6 +20,7 @@ function App() {
       });
       const data = await response.json();
       setGames(data.data);
+      setLoading(false);
     };
     fetchNBAData();
   }, []);
@@ -26,7 +28,7 @@ function App() {
   return (
     <div>
       <div>Tonight's NBA</div>
-      <GameCard games={games} />
+      {loading ? <div>Loading...</div> : <GameCard games={games} />}
     </div>
   );
 }
