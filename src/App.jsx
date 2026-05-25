@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
@@ -32,10 +32,29 @@ function App() {
       status: "IN PROGRESS",
     },
   ];
+
+  const [games, setGames] = useState([]);
+
+  const stuff = useEffect(() => {
+    const getNBAData = async () => {
+      const today = new Date().toISOString().split("T")[0];
+      const url = `https://api.balldontlie.io/v1/games?dates[]=${today}`;
+      const response = await fetch(url, {
+        headers: {
+          Authorization: import.meta.env.VITE_BALLDONTLIE_KEY,
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+      return data;
+    };
+    getNBAData();
+  }, []);
+
   return (
     <div>
       <div>Tonight's NBA</div>
-      <GameCard games={fakeGames}/>
+      <GameCard games={fakeGames} />
     </div>
   );
 }

@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 export default function GameCard({ games }) {
+
   return games.map((game) => (
     <div key={game.id}>
       <h1>
