@@ -47,7 +47,7 @@ function App() {
       ) : games.length === 0 ? (
         <div>No games today!</div>
       ) : (
-        <GameCard games={games} />
+        games.map((game) => <GameCard game={game} key={game.id}/>)
       )}
     </div>
   );
