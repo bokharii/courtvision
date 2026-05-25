@@ -44,6 +44,8 @@ function App() {
         <div>Loading...</div>
       ) : error ? (
         <div>Something went wrong, probably too many API requests.</div>
+      ) : games.length === 0 ? (
+        <div>No games today!</div>
       ) : (
         <GameCard games={games} />
       )}
