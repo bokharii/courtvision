@@ -5,7 +5,7 @@ export default function GameCard({ games }) {
   return games.map((game) => (
     <div key={game.id}>
       <h1>
-        {game.home_team.full_name} vs {game.visitor_team.full_name}
+      {game.visitor_team.full_name} @ {game.home_team.full_name}
       </h1>
       <h2>
         {game.home_team_score} - {game.visitor_team_score}

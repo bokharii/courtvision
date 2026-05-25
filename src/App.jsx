@@ -6,33 +6,6 @@ import GameCard from "./GameCard";
 import "./App.css";
 
 function App() {
-  const fakeGames = [
-    {
-      id: 5,
-      homeTeam: "New York Knicks",
-      awayTeam: "Cleveland Cavaliers",
-      homeScore: 124,
-      awayScore: 102,
-      status: "COMPLETED",
-    },
-    {
-      id: 6,
-      homeTeam: "Oklahoma City Thunder",
-      awayTeam: "San Antonio Spurs",
-      homeScore: 155,
-      awayScore: 149,
-      status: "COMPLETED",
-    },
-    {
-      id: 231,
-      homeTeam: "Boston Celtics",
-      awayTeam: "Los Angeles Lakers",
-      homeScore: 95,
-      awayScore: 96,
-      status: "IN PROGRESS",
-    },
-  ];
-
   const [games, setGames] = useState([]);
 
   useEffect(() => {
