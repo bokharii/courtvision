@@ -35,8 +35,8 @@ function App() {
 
   const [games, setGames] = useState([]);
 
-  const stuff = useEffect(() => {
-    const getNBAData = async () => {
+  useEffect(() => {
+    const fetchNBAData = async () => {
       const today = new Date().toISOString().split("T")[0];
       const url = `https://api.balldontlie.io/v1/games?dates[]=${today}`;
       const response = await fetch(url, {
@@ -45,16 +45,15 @@ function App() {
         },
       });
       const data = await response.json();
-      console.log(data);
-      return data;
+      setGames(data.data);
     };
-    getNBAData();
+    fetchNBAData();
   }, []);
 
   return (
     <div>
       <div>Tonight's NBA</div>
-      <GameCard games={fakeGames} />
+      <GameCard games={games} />
     </div>
   );
 }
