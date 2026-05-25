@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
+import GameCard from "./GameCard";
 import "./App.css";
 
 function App() {
@@ -31,25 +32,10 @@ function App() {
       status: "IN PROGRESS",
     },
   ];
-
-  const games = fakeGames.map((game) => {
-    return (
-      <div key={game.id}>
-        <h1>
-          {game.homeTeam} vs {game.awayTeam}
-        </h1>
-        <h2>
-          {game.homeScore} - {game.awayScore}
-        </h2>
-        <h3>GAME: {game.status}</h3>
-      </div>
-    );
-  });
-
   return (
     <div>
       <div>Tonight's NBA</div>
-      {games}
+      <GameCard games={fakeGames}/>
     </div>
   );
 }
