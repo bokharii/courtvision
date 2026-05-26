@@ -63,7 +63,6 @@ export default function HistoryPage() {
         </button>
       </div>
 
-      <div>Past Games</div>
       {loading ? (
         <div className="status-message">Loading...</div>
       ) : error ? (
