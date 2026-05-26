@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NBA_TEAMS } from "../teams";
+import { NBA_TEAMS } from "./constants/teams";
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
