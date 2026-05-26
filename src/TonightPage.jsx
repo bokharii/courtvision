@@ -1,4 +1,4 @@
-import GameCard from "./GameCard"
+import GameCard from "./GameCard";
 import { useState, useEffect } from "react";
 
 export default function TonightPage() {
@@ -8,7 +8,7 @@ export default function TonightPage() {
 
   useEffect(() => {
     const fetchNBAData = async () => {
-      const today = new Intl.DateTimeFormat('en-CA').format(new Date());
+      const today = new Intl.DateTimeFormat("en-CA").format(new Date());
       const url = `https://api.balldontlie.io/v1/games?dates[]=${today}`;
       try {
         const response = await fetch(url, {
@@ -32,17 +32,25 @@ export default function TonightPage() {
     };
     fetchNBAData();
   }, []);
+
   return (
-    <div>
-      <div>Tonight's NBA</div>
+    <div className="page">
+      <h1 className="page-title">Tonight&apos;s NBA</h1>
       {loading ? (
-        <div>Loading...</div>
+        <div className="status-message">Loading...</div>
       ) : error ? (
-        <div>Something went wrong, probably too many API requests.</div>
+        <div className="status-message status-message--error">
+          Something went wrong, probably too many API requests.
+        </div>
       ) : games.length === 0 ? (
-        <div>No games today!</div>
+        <div className="status-message">No games today!</div>
       ) : (
-        games.map((game) => <GameCard game={game} key={game.id}/>)
+        <div className="game-list">
+          {games.map((game) => (
+            <GameCard game={game} key={game.id} />
+          ))}
+        </div>
       )}
     </div>
-)}
+  );
+}

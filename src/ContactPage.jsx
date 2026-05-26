@@ -38,16 +38,21 @@ export default function ContactPage() {
   };
 
   return (
-    <div>
+    <div className="page">
       {submitted ? (
-        <p>Thank you for reaching out!</p>
+        <p className="status-message status-message--success">
+          Thank you for reaching out!
+        </p>
       ) : (
         <>
           {error && (
-            <p>Oops, something went wrong. Hopefully it isn't my fault!</p>
+            <p className="status-message status-message--error">
+              Oops, something went wrong. Hopefully it isn&apos;t my fault!
+            </p>
           )}
-          <form onSubmit={handleSubmit}>
+          <form className="form" onSubmit={handleSubmit}>
             <input
+              className="form-input"
               type="text"
               name="name"
               value={formData.name}
@@ -56,6 +61,7 @@ export default function ContactPage() {
               required
             />
             <input
+              className="form-input"
               type="email"
               name="email"
               value={formData.email}
@@ -64,13 +70,16 @@ export default function ContactPage() {
               required
             />
             <textarea
+              className="form-textarea"
               name="message"
               value={formData.message}
               onChange={handleChange}
               placeholder="Message"
               required
             />
-            <button type="submit">Send</button>
+            <button type="submit" className="btn">
+              Send
+            </button>
           </form>
         </>
       )}

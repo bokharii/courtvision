@@ -36,17 +36,20 @@ export default function HistoryPage() {
   };
 
   return (
-    <div>
-      <div>
+    <div className="page">
+      <div className="form-row">
         <input
+          className="form-input"
           type="date"
           max={formattedDate}
           value={selectedDate}
           onChange={(e) => {
             setSelectedDate(e.target.value);
           }}
-        ></input>
+        />
         <button
+          type="button"
+          className="btn"
           disabled={!selectedDate}
           onClick={() => {
             if (!selectedDate) return;
@@ -62,13 +65,19 @@ export default function HistoryPage() {
 
       <div>Past Games</div>
       {loading ? (
-        <div>Loading...</div>
+        <div className="status-message">Loading...</div>
       ) : error ? (
-        <div>Something went wrong, probably too many API requests.</div>
+        <div className="status-message status-message--error">
+          Something went wrong, probably too many API requests.
+        </div>
       ) : games.length === 0 && hasSearched ? (
-        <div>No games on this date.</div>
+        <div className="status-message">No games on this date.</div>
       ) : (
-        games.map((game) => <GameCard game={game} key={game.id} />)
+        <div className="game-list">
+          {games.map((game) => (
+            <GameCard game={game} key={game.id} />
+          ))}
+        </div>
       )}
     </div>
   );
