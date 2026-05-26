@@ -5,13 +5,18 @@ export default function GameCard({ game }) {
   const visitorLogo = getTeamLogoUrl(game.visitor_team.abbreviation);
   const homeLogo = getTeamLogoUrl(game.home_team.abbreviation);
 
+  const parsed = Date.parse(game.status);
+  const statusLabel = Number.isNaN(parsed)
+    ? game.status
+    : new Date(parsed).toLocaleString();
+
   return (
     <article className="game-card">
       <h1 className="game-card-teams">
         <div className="team-row">
           {visitorLogo ? (
             <img
-            className="team-logo"
+              className="team-logo"
               src={visitorLogo}
               alt={`Logo for the ${game.visitor_team.full_name}`}
             />
@@ -22,7 +27,7 @@ export default function GameCard({ game }) {
         <div className="team-row">
           {homeLogo ? (
             <img
-            className="team-logo"
+              className="team-logo"
               src={homeLogo}
               alt={`Logo for the ${game.home_team.full_name}`}
             />
@@ -33,7 +38,9 @@ export default function GameCard({ game }) {
       <h2 className="game-card-score">
         {game.visitor_team_score} - {game.home_team_score}
       </h2>
-      <h3 className="game-card-status">GAME: {game.status}</h3>
+      <h3 className="game-card-status">
+        {statusLabel}
+      </h3>
     </article>
   );
 }
