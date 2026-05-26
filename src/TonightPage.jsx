@@ -8,7 +8,7 @@ export default function TonightPage() {
 
   useEffect(() => {
     const fetchNBAData = async () => {
-      const today = new Date().toISOString().split("T")[0];
+      const today = new Intl.DateTimeFormat('en-CA').format(new Date());
       const url = `https://api.balldontlie.io/v1/games?dates[]=${today}`;
       try {
         const response = await fetch(url, {
