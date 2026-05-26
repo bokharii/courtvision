@@ -3,25 +3,27 @@ import HistoryPage from "./HistoryPage";
 import ContactPage from "./ContactPage";
 import PredictPage from "./PredictPage";
 import "./App.css";
-import { Link, Routes, Route } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
 
 function App() {
+  const navClass = ({ isActive }) =>
+    isActive ? "nav-link active" : "nav-link";
   return (
     <>
       <nav className="navbar">
         <div className="navbar-links">
-          <Link to="/" className="nav-link">
+          <NavLink to="/" end className={navClass}>
             Home
-          </Link>
-          <Link to="/history" className="nav-link">
+          </NavLink>
+          <NavLink to="/history" className={navClass}>
             History
-          </Link>
-          <Link to="/contact" className="nav-link">
+          </NavLink>
+          <NavLink to="/contact" className={navClass}>
             Contact
-          </Link>
-          <Link to="/predict" className="nav-link">
+          </NavLink>
+          <NavLink to="/predict" className={navClass}>
             Predict (NEW!)
-          </Link>
+          </NavLink>
         </div>
       </nav>
 

@@ -10,7 +10,7 @@ export default function HistoryPage() {
 
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
-  const formattedDate = yesterday.toISOString().split("T")[0];
+  const formattedDate = new Intl.DateTimeFormat("en-CA").format(yesterday)
 
   const fetchGamesByDate = async (date) => {
     const url = `https://api.balldontlie.io/v1/games?dates[]=${date}`;
