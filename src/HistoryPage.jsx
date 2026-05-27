@@ -28,6 +28,8 @@ export default function HistoryPage() {
 
   return (
     <div className="page">
+      <h1>Past Games</h1>
+      <p>Search for previous games that have already happened</p>
       <div className="form-row">
         <input
           className="form-input"

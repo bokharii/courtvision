@@ -18,8 +18,8 @@ function App() {
           <NavLink to="/" end className={navClass}>
             Home
           </NavLink>
-          <NavLink to="/history" className={navClass}>
-            History
+          <NavLink to="/past-games" className={navClass}>
+            Past Games
           </NavLink>
           <NavLink to="/contact" className={navClass}>
             Contact
@@ -33,7 +33,7 @@ function App() {
       <main className="app-main">
         <Routes>
           <Route path="/" element={<TonightPage />} />
-          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/past-games" element={<HistoryPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/predict" element={<PredictPage />} />
         </Routes>

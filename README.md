@@ -9,7 +9,7 @@ will deploy soon
 ## Features
 
 - **Tonight** — Fetches today's games from the [balldontlie](https://www.balldontlie.io/) API using your local date.
-- **History** — Search past games by date (up to yesterday).
+- **Past Games** — Search past games by date (up to yesterday).
 - **Predict** — Pick two teams and get a short AI-written matchup preview via the Google Gemini API.
 - **Contact** — Controlled contact form submitted through Formspree.
 
