@@ -39,6 +39,7 @@ export default function ContactPage() {
 
   return (
     <div className="page">
+      <h1 className="page-title">Contact Me!</h1>
       {submitted ? (
         <p className="status-message status-message--success">
           Thank you for reaching out!

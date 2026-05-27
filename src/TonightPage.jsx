@@ -6,6 +6,7 @@ export default function TonightPage() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState(null);
   const today = new Intl.DateTimeFormat("en-CA").format(new Date());
 
   const fetchTonightsGames = async () => {
@@ -13,6 +14,7 @@ export default function TonightPage() {
       const gameData = await fetchGamesByDate(today);
       setError(false);
       setGames(gameData);
+      setLastUpdated(new Date());
     } catch (err) {
       setError(true);
       setGames([]);
@@ -36,6 +38,11 @@ export default function TonightPage() {
   return (
     <div className="page">
       <h1 className="page-title">Tonight&apos;s NBA</h1>
+      {lastUpdated && (
+        <p className="page-subtitle">
+          Last updated: {lastUpdated.toLocaleTimeString()}
+        </p>
+      )}
       {loading ? (
         <div className="status-message">Loading...</div>
       ) : error ? (
