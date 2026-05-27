@@ -1,10 +1,13 @@
 # CourtVision
 
 A multi-page React app for browsing NBA games and experimenting with AI-powered matchup predictions.
+<img width="811" height="527" alt="Screenshot 2026-05-26 at 8 44 20 PM" src="https://github.com/user-attachments/assets/ae515d01-5674-4051-8aee-20ba57f822dc" />
+<img width="807" height="816" alt="Screenshot 2026-05-26 at 8 44 44 PM" src="https://github.com/user-attachments/assets/e9b5f553-9c6f-4f97-b1e4-58f7ded9de63" />
+<img width="808" height="841" alt="Screenshot 2026-05-26 at 8 46 45 PM" src="https://github.com/user-attachments/assets/6162a2d7-1b2f-49eb-b0f9-a2fe3650bc52" />
 
 ## Live demo
 
-Live demo is available on [vercel](https://courtvision-kyk6.vercel.app/)
+Live demo is available on [Vercel](https://courtvision-kyk6.vercel.app/)
 
 ## Features
 
