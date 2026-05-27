@@ -1,5 +1,6 @@
 import GameCard from "./GameCard";
 import { useState } from "react";
+import fetchGamesByDate from "./fetchGamesByDate";
 
 export default function HistoryPage() {
   const [games, setGames] = useState([]);
@@ -10,26 +11,16 @@ export default function HistoryPage() {
 
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
-  const formattedDate = new Intl.DateTimeFormat("en-CA").format(yesterday)
+  const formattedDate = new Intl.DateTimeFormat("en-CA").format(yesterday);
 
-  const fetchGamesByDate = async (date) => {
-    const url = `https://api.balldontlie.io/v1/games?dates[]=${date}`;
+  const checkHistory = async () => {
     try {
-      const response = await fetch(url, {
-        headers: {
-          Authorization: import.meta.env.VITE_BALLDONTLIE_KEY,
-        },
-      });
-      if (response.ok) {
-        const data = await response.json();
-        setGames(data.data);
-      } else setError(true);
+      const gameData = await fetchGamesByDate(selectedDate);
+      setGames(gameData);
     } catch (err) {
-      console.error(
-        "Error - something went wrong with fetch to balldontlie API",
-        err,
-      );
       setError(true);
+      setGames([]);
+      console.error("Error when fetching game data", err);
     } finally {
       setLoading(false);
     }
@@ -56,7 +47,7 @@ export default function HistoryPage() {
             setLoading(true);
             setError(false);
             setHasSearched(true);
-            fetchGamesByDate(selectedDate);
+            checkHistory();
           }}
         >
           Search
