@@ -15,6 +15,7 @@ export default function TonightPage() {
         setGames(gameData);
       } catch (err) {
         setError(true);
+        setGames([]);
         console.error(
           "Error - something went wrong with fetch to balldontlie API",
           err,
