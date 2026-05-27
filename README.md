@@ -4,7 +4,7 @@ A multi-page React app for browsing NBA games and experimenting with AI-powered 
 
 ## Live demo
 
-will deploy soon
+Live demo is available on [vercel](https://courtvision-kyk6.vercel.app/)
 
 ## Features
 
