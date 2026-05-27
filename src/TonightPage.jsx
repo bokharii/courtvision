@@ -6,10 +6,10 @@ export default function TonightPage() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const today = new Intl.DateTimeFormat("en-CA").format(new Date());
 
   const fetchTonightsGames = async () => {
     try {
-      const today = new Intl.DateTimeFormat("en-CA").format(new Date());
       const gameData = await fetchGamesByDate(today);
       setError(false);
       setGames(gameData);
@@ -26,7 +26,6 @@ export default function TonightPage() {
   };
 
   useEffect(() => {
-    setLoading(true);
     fetchTonightsGames();
     const interval = setInterval(() => {
       fetchTonightsGames();
