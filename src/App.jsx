@@ -11,7 +11,9 @@ function App() {
   return (
     <>
       <nav className="navbar">
-        <div className="navbar-brand">CourtVision</div>
+        <NavLink to="/" className="navbar-brand">
+          CourtVision
+        </NavLink>
         <div className="navbar-links">
           <NavLink to="/" end className={navClass}>
             Home
