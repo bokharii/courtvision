@@ -20,7 +20,7 @@ export default function PredictPage() {
     try {
       const response = await ai.models.generateContent({
         model: "gemini-2.5-flash",
-        contents: `Predict a game matchup between the ${teamA} and the ${teamB} in a few sentences.`,
+        contents: `Predict a game matchup between the ${teamA} and the ${teamB} in a few sentences. Provide the final game score as well.`,
       });
       setGeminiResponse(response.candidates[0].content.parts[0].text);
     } catch (err) {

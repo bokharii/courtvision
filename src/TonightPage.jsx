@@ -37,7 +37,7 @@ export default function TonightPage() {
           Something went wrong, probably too many API requests.
         </div>
       ) : games.length === 0 ? (
-        <div className="status-message">No games today!</div>
+        <div className="status-message">No games scheduled for today!</div>
       ) : (
         <div className="game-list">
           {games.map((game) => (
