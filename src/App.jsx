@@ -11,6 +11,7 @@ function App() {
   return (
     <>
       <nav className="navbar">
+        <div className="navbar-brand">CourtVision</div>
         <div className="navbar-links">
           <NavLink to="/" end className={navClass}>
             Home
