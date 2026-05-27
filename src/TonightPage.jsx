@@ -7,24 +7,31 @@ export default function TonightPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  const fetchTonightsGames = async () => {
+    try {
+      const today = new Intl.DateTimeFormat("en-CA").format(new Date());
+      const gameData = await fetchGamesByDate(today);
+      setError(false);
+      setGames(gameData);
+    } catch (err) {
+      setError(true);
+      setGames([]);
+      console.error(
+        "Error - something went wrong with fetch to balldontlie API",
+        err,
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const today = new Intl.DateTimeFormat("en-CA").format(new Date());
-    const fetchTonightsGames = async () => {
-      try {
-        const gameData = await fetchGamesByDate(today);
-        setGames(gameData);
-      } catch (err) {
-        setError(true);
-        setGames([]);
-        console.error(
-          "Error - something went wrong with fetch to balldontlie API",
-          err,
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
+    setLoading(true);
     fetchTonightsGames();
+    const interval = setInterval(() => {
+      fetchTonightsGames();
+    }, 60000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -39,11 +46,13 @@ export default function TonightPage() {
       ) : games.length === 0 ? (
         <div className="status-message">No games scheduled for today!</div>
       ) : (
-        <div className="game-list">
-          {games.map((game) => (
-            <GameCard game={game} key={game.id} />
-          ))}
-        </div>
+        <>
+          <div className="game-list">
+            {games.map((game) => (
+              <GameCard game={game} key={game.id} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
