@@ -1,5 +1,6 @@
 import GameCard from "./GameCard";
 import { useState, useEffect } from "react";
+import fetchGamesByDate from "./fetchGamesByDate";
 
 export default function TonightPage() {
   const [games, setGames] = useState([]);
@@ -7,30 +8,22 @@ export default function TonightPage() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchNBAData = async () => {
-      const today = new Intl.DateTimeFormat("en-CA").format(new Date());
-      const url = `https://api.balldontlie.io/v1/games?dates[]=${today}`;
+    const today = new Intl.DateTimeFormat("en-CA").format(new Date());
+    const fetchTonightsGames = async () => {
       try {
-        const response = await fetch(url, {
-          headers: {
-            Authorization: import.meta.env.VITE_BALLDONTLIE_KEY,
-          },
-        });
-        if (response.ok) {
-          const data = await response.json();
-          setGames(data.data);
-        } else setError(true);
+        const gameData = await fetchGamesByDate(today);
+        setGames(gameData);
       } catch (err) {
+        setError(true);
         console.error(
           "Error - something went wrong with fetch to balldontlie API",
           err,
         );
-        setError(true);
       } finally {
         setLoading(false);
       }
     };
-    fetchNBAData();
+    fetchTonightsGames();
   }, []);
 
   return (
